@@ -11,9 +11,49 @@ import {
   Alert,
 } from "react-native";
 
+const MedicalHistory = () => {
+  const [userData, setUserData] = useState({
+    name: "John Doe",
+    age: 35,
+
+    gender: "Male",
+    bloodGroup: "B+",
+    email: "john.doe@example.com",
+    phone: "+1 234 567 890",
+    medicalHistory: [
+      {
+        date: "2023-12-10",
+        condition: "Fever",
+        prescription: "Paracetamol",
+      },
+      {
+        date: "2024-02-14",
+        condition: "Headache",
+        prescription: "Ibuprofen",
+      },
+    ],
+  });
+  return (
+    <View style={styles.container}>
+      <View style={styles.recordContainer}>
+        {userData.medicalHistory.map((record, index) => (
+          <View key={index} style={styles.recordItem}>
+            <Text style={styles.recordText}>Date: {record.date}</Text>
+            <Text style={styles.recordText}>Condition: {record.condition}</Text>
+            <Text style={styles.recordText}>
+              Prescription: {record.prescription}
+            </Text>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+};
+
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showMedHis, setShowMedHis] = useState(true);
 
   // Mock API to simulate fetching patient data
   const fetchUserData = async () => {
@@ -114,8 +154,30 @@ const ProfilePage = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Medical History</Text>
-        <Ionicons name="arrow" />
+        <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
+          <Text style={styles.sectionTitle}>Medical History</Text>
+
+          {showMedHis ? (
+            <>
+              <Ionicons
+                name="arrow-up-outline"
+                size={25}
+                color={"green"}
+                onPress={() => setShowMedHis(!showMedHis)}
+              />
+            </>
+          ) : (
+            <>
+              <Ionicons
+                name="arrow-down-outline"
+                size={25}
+                color={"red"}
+                onPress={() => setShowMedHis(!showMedHis)}
+              />
+            </>
+          )}
+        </View>
+        {showMedHis ? <MedicalHistory /> : ""}
       </View>
 
       <View style={styles.gridContainer}>
@@ -266,6 +328,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#FF3B30",
     textAlign: "center",
+  },
+  recordItem: {
+    marginBottom: 15,
+    backgroundColor: "#fff",
+  },
+  recordText: {
+    fontSize: 16,
   },
 });
 

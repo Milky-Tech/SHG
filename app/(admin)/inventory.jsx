@@ -1,16 +1,6 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  Modal,
-  TextInput,
-  Button,
-} from "react-native";
-import { download, icon } from "../../constants/icons";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { icon } from "../../constants/icons";
 
 const Inventory = () => {
   // Sample data
@@ -48,14 +38,6 @@ const Inventory = () => {
     // Add more rows as needed
   ];
 
-  const [modalVisible, setModalVisible] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "" });
-
-  const handleFormSubmit = () => {
-    console.log("Form Data:", formData);
-    setModalVisible(false); // Close the modal after submission
-  };
-
   return (
     <ScrollView style={styles.container}>
       <View style={styles.topBar}>
@@ -81,87 +63,7 @@ const Inventory = () => {
         >
           Item Stock List
         </Text>
-        <TouchableOpacity onPress={() => setModalVisible(true)}>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: 700,
-              backgroundColor: "#0D8F83",
-              color: "#fff",
-              paddingVertical: 5,
-              paddingHorizontal: 10,
-              borderRadius: 5,
-            }}
-          >
-            + Add
-          </Text>
-        </TouchableOpacity>
-        <Modal
-          animationType="slide"
-          transparent
-          visible={modalVisible}
-          onRequestClose={() => setModalVisible(false)} // Handle back button press
-        >
-          <View style={styles.modalOverlay}>
-            <View style={styles.modalContent}>
-              <Text style={styles.modalTitle}>Create Appoointment</Text>
-
-              {/* Form Fields */}
-              <TextInput
-                style={styles.input}
-                placeholder="Doctor"
-                value={formData.name}
-                onChangeText={(text) =>
-                  setFormData({ ...formData, Doctor: text })
-                }
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Doctor Fees"
-                value={formData.email}
-                onChangeText={(text) =>
-                  setFormData({ ...formData, "appointment date": text })
-                }
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Appointment Date"
-                value={formData.email}
-                onChangeText={(text) =>
-                  setFormData({ ...formData, "appointment date": text })
-                }
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="Priority"
-                value={formData.email}
-                onChangeText={(text) =>
-                  setFormData({ ...formData, "appointment date": text })
-                }
-              />
-
-              {/* Submit Button */}
-              <Button title="Submit" onPress={handleFormSubmit} />
-
-              {/* Close Modal */}
-              <TouchableOpacity
-                style={styles.closeButton}
-                onPress={() => setModalVisible(false)}
-              >
-                <Text style={styles.buttonText}>Close</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Modal>
-
-        <Image
-          source={download}
-          resizeMode="contain"
-          style={{
-            width: "8%",
-            height: "65%",
-          }}
-        />
+        <Ionicons name="download-outline" size={25} color={"blue"} />
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator>
         <View>
@@ -272,44 +174,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     textAlign: "center",
-  },
-  modalOverlay: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Dim background
-  },
-  modalContent: {
-    width: "90%",
-    backgroundColor: "#fff",
-    padding: 20,
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  modalTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  input: {
-    height: 50,
-    borderColor: "#ddd",
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 15,
-    paddingHorizontal: 10,
-    fontSize: 16,
-  },
-  closeButton: {
-    marginTop: 10,
-    backgroundColor: "#FF3B30",
-    padding: 10,
-    borderRadius: 5,
   },
 });
 

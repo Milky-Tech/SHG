@@ -39,15 +39,20 @@ const Notifications = () => {
       <Animated.View style={[styles.toggleBox, { height: heightAnimation }]}>
         <View
           style={{
-            alignItems: "center",
             padding: 5,
             flexDirection: "row",
             justifyContent: "space-between",
           }}
         >
-          <Text style={{ fontSize: 18, fontWeight: 700 }}>
-            Notification Log
-          </Text>
+          {expanded ? (
+            <Text style={{ fontSize: 25, fontWeight: 700 }}>
+              Notification Log
+            </Text>
+          ) : (
+            <Text style={{ fontSize: 18, fontWeight: 600 }}>
+              Notification Log
+            </Text>
+          )}
           <TouchableOpacity onPress={toggleHeight}>
             {expanded ? (
               <Ionicons
