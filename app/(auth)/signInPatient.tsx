@@ -71,12 +71,9 @@ const SignInPatient = () => {
       {/* Footer Text */}
       <Text style={styles.footerText}>
         Don't have an account?{" "}
-        <Text
-          style={styles.linkText}
-          onPress={() => Alert.alert("Go to Sign Up")}
-        >
-          Register
-        </Text>
+        <Link href={"/RegisterPatient"}>
+          <Text style={styles.linkText}>Register</Text>
+        </Link>
       </Text>
     </View>
   );

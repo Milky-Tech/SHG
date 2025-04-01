@@ -10,8 +10,8 @@ import {
   TextInput,
   Button,
 } from "react-native";
-import { download, icon } from "../../constants/icons";
-import { Picker } from "react-native-web";
+import { icon } from "../../constants/icons";
+// import { Picker } from "react-native-web";
 import { Ionicons } from "@expo/vector-icons";
 
 const Appointment = () => {
@@ -120,6 +120,7 @@ const Appointment = () => {
               {/* Form Fields */}
               <TextInput
                 style={styles.input}
+                placeholderTextColor="#888"
                 placeholder="Doctor"
                 value={formData.name}
                 onChangeText={(text) =>
@@ -128,6 +129,7 @@ const Appointment = () => {
               />
               <TextInput
                 style={styles.input}
+                placeholderTextColor="#888"
                 placeholder="Doctor Fees"
                 value={formData.email}
                 onChangeText={(text) =>
@@ -137,6 +139,7 @@ const Appointment = () => {
               <TextInput
                 style={styles.input}
                 placeholder="Appointment Date"
+                placeholderTextColor="#888"
                 value={formData.email}
                 onChangeText={(text) =>
                   setFormData({ ...formData, "appointment date": text })
@@ -144,6 +147,7 @@ const Appointment = () => {
               />
               <TextInput
                 style={styles.input}
+                placeholderTextColor="#888"
                 placeholder="Priority"
                 value={formData.email}
                 onChangeText={(text) =>
@@ -289,44 +293,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     textAlign: "center",
-  },
-  modalOverlay: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Dim background
-  },
-  modalContent: {
-    width: "90%",
-    backgroundColor: "#fff",
-    padding: 20,
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  modalTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  input: {
-    height: 50,
-    borderColor: "#ddd",
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 15,
-    paddingHorizontal: 10,
-    fontSize: 16,
-  },
-  closeButton: {
-    marginTop: 10,
-    backgroundColor: "#FF3B30",
-    padding: 10,
-    borderRadius: 5,
   },
 });
 
